@@ -13,8 +13,12 @@
 		BFB08E9820C0AAED000E44EB /* GlovoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB08E9720C0AAED000E44EB /* GlovoTests.swift */; };
 		BFB08EA320C0AAEE000E44EB /* GlovoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB08EA220C0AAEE000E44EB /* GlovoUITests.swift */; };
 		BFB08EB120C0AB2B000E44EB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BFB08EB020C0AB2A000E44EB /* Podfile */; };
+		BFC4200B20C2C462008AF459 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4200A20C2C462008AF459 /* TableCell.swift */; };
+		BFC4200D20C2C4F3008AF459 /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4200C20C2C4F3008AF459 /* CellData.swift */; };
 		BFD60AE320C0C20C000E1EB9 /* GlovoConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD60AE220C0C20C000E1EB9 /* GlovoConfigurationBuilder.swift */; };
 		BFD60AE520C0CEFD000E1EB9 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD60AE420C0CEFD000E1EB9 /* CountryCodes.swift */; };
+		BFDDC45720C286EA00CA6FB3 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDDC45620C286EA00CA6FB3 /* TableVC.swift */; };
+		BFDDC45920C287AE00CA6FB3 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDDC45820C287AE00CA6FB3 /* NavigationBarView.swift */; };
 		BFF9CAC720C1411600100B02 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAC620C1411600100B02 /* ApiError.swift */; };
 		BFF9CAC920C1479F00100B02 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAC820C1479F00100B02 /* ApiService.swift */; };
 		BFF9CACB20C14A0100100B02 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CACA20C14A0100100B02 /* Api.swift */; };
@@ -25,6 +29,8 @@
 		BFF9CAD520C1759300100B02 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAD420C1759300100B02 /* SplashScreenPresenter.swift */; };
 		BFF9CAD720C17E1200100B02 /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAD620C17E1200100B02 /* SplashScreenVC.swift */; };
 		BFF9CAD920C1BACD00100B02 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAD820C1BACD00100B02 /* MainVC.swift */; };
+		BFF9CADF20C1E6AA00100B02 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CADE20C1E6AA00100B02 /* MainView.swift */; };
+		BFF9CAE120C1E6B800100B02 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9CAE020C1E6B800100B02 /* MainPresenter.swift */; };
 		D95ABDE195E6E93F3A48697A /* Pods_Glovo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC20BF4383CAA0C9A615CC53 /* Pods_Glovo.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +67,12 @@
 		BFB08EA220C0AAEE000E44EB /* GlovoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoUITests.swift; sourceTree = "<group>"; };
 		BFB08EA420C0AAEE000E44EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFB08EB020C0AB2A000E44EB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BFC4200A20C2C462008AF459 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		BFC4200C20C2C4F3008AF459 /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		BFD60AE220C0C20C000E1EB9 /* GlovoConfigurationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoConfigurationBuilder.swift; sourceTree = "<group>"; };
 		BFD60AE420C0CEFD000E1EB9 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
+		BFDDC45620C286EA00CA6FB3 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		BFDDC45820C287AE00CA6FB3 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		BFF9CAC620C1411600100B02 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		BFF9CAC820C1479F00100B02 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		BFF9CACA20C14A0100100B02 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -73,6 +83,8 @@
 		BFF9CAD420C1759300100B02 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
 		BFF9CAD620C17E1200100B02 /* SplashScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
 		BFF9CAD820C1BACD00100B02 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		BFF9CADE20C1E6AA00100B02 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BFF9CAE020C1E6B800100B02 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		CE3540D55F2DBE9C56AAF261 /* Pods_GlovoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlovoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5C2CA82216284A79617A3C /* Pods-Glovo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glovo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glovo/Pods-Glovo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +166,7 @@
 				BFF9CADC20C1BF7000100B02 /* Utils */,
 				BFF9CADB20C1BF5A00100B02 /* SplashScreen */,
 				BFF9CADD20C1BF9600100B02 /* MainVC */,
+				BFDDC45520C286A200CA6FB3 /* TableVC */,
 				BFB08E8220C0AAE4000E44EB /* AppDelegate.swift */,
 				BFB08E8920C0AAED000E44EB /* Assets.xcassets */,
 				BFB08E8E20C0AAED000E44EB /* Info.plist */,
@@ -177,6 +190,15 @@
 				BFB08EA420C0AAEE000E44EB /* Info.plist */,
 			);
 			path = GlovoUITests;
+			sourceTree = "<group>";
+		};
+		BFDDC45520C286A200CA6FB3 /* TableVC */ = {
+			isa = PBXGroup;
+			children = (
+				BFDDC45620C286EA00CA6FB3 /* TableVC.swift */,
+				BFC4200A20C2C462008AF459 /* TableCell.swift */,
+			);
+			path = TableVC;
 			sourceTree = "<group>";
 		};
 		BFF9CADA20C1BF3F00100B02 /* Api */ = {
@@ -207,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				BFD60AE420C0CEFD000E1EB9 /* CountryCodes.swift */,
+				BFDDC45820C287AE00CA6FB3 /* NavigationBarView.swift */,
+				BFC4200C20C2C4F3008AF459 /* CellData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -215,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				BFF9CAD820C1BACD00100B02 /* MainVC.swift */,
+				BFF9CADE20C1E6AA00100B02 /* MainView.swift */,
+				BFF9CAE020C1E6B800100B02 /* MainPresenter.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -469,17 +495,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC4200B20C2C462008AF459 /* TableCell.swift in Sources */,
 				BFB08E8320C0AAE4000E44EB /* AppDelegate.swift in Sources */,
+				BFF9CADF20C1E6AA00100B02 /* MainView.swift in Sources */,
 				BFF9CAC920C1479F00100B02 /* ApiService.swift in Sources */,
 				BFD60AE320C0C20C000E1EB9 /* GlovoConfigurationBuilder.swift in Sources */,
 				BFF9CAD720C17E1200100B02 /* SplashScreenVC.swift in Sources */,
+				BFDDC45720C286EA00CA6FB3 /* TableVC.swift in Sources */,
 				BFF9CAD320C1752500100B02 /* SplashScreenView.swift in Sources */,
 				BFF9CAD520C1759300100B02 /* SplashScreenPresenter.swift in Sources */,
 				BFF9CAC720C1411600100B02 /* ApiError.swift in Sources */,
 				BFF9CACD20C1596B00100B02 /* ApiMethod.swift in Sources */,
 				BFF9CACB20C14A0100100B02 /* Api.swift in Sources */,
+				BFDDC45920C287AE00CA6FB3 /* NavigationBarView.swift in Sources */,
+				BFF9CAE120C1E6B800100B02 /* MainPresenter.swift in Sources */,
 				BFF9CAD120C16B4C00100B02 /* GlovoInitManager.swift in Sources */,
 				BFF9CACF20C15F9C00100B02 /* Services.swift in Sources */,
+				BFC4200D20C2C4F3008AF459 /* CellData.swift in Sources */,
 				BFD60AE520C0CEFD000E1EB9 /* CountryCodes.swift in Sources */,
 				BFF9CAD920C1BACD00100B02 /* MainVC.swift in Sources */,
 			);

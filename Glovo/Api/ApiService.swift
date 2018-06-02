@@ -28,7 +28,6 @@ class ApiServiceImp: ApiService {
     func getCities(completionHandler: ((Any?, ApiError?)->())?) {
         Services.GetCities { (result, error) in
             if error == nil {
-                print(result)
                 completionHandler!(result, nil)
             } else {
                 completionHandler!(nil, error)
@@ -39,7 +38,6 @@ class ApiServiceImp: ApiService {
     func getCity(_ cityName: String, completionHandler: ((Any?, ApiError?)->())?) {
         Services.GetCity(city: cityName) { (result, error) in
             if error == nil {
-                print(result)
                 completionHandler!(result, nil)
             } else {
                 completionHandler!(nil, error)

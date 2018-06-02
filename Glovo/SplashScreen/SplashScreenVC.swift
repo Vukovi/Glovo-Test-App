@@ -53,7 +53,7 @@ extension SplashScreenVC: SplashScreenView {
         }
         let mainVC = MainVC()
         let window = UIApplication.shared.keyWindow!
-        window.rootViewController = mainVC
+        window.rootViewController = UINavigationController(rootViewController: mainVC)
         window.makeKeyAndVisible()
     }
     

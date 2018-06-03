@@ -3,7 +3,6 @@ platform :ios, '8.0'
 def pods
 use_frameworks!
 pod 'SnapKit', '~> 4.0.0'
-pod 'EVReflection'
 pod 'Alamofire', '~> 4.4'
 pod 'GoogleMaps'
 pod 'GooglePlaces'

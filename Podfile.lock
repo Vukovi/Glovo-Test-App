@@ -1,8 +1,5 @@
 PODS:
   - Alamofire (4.7.2)
-  - EVReflection (4.19.1):
-    - EVReflection/Core (= 4.19.1)
-  - EVReflection/Core (4.19.1)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -14,18 +11,16 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - EVReflection
   - GoogleMaps
   - GooglePlaces
   - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  EVReflection: 93817c1981460105cd3b44c67ea87a5b6f5bb98e
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: f0819f8e9ebd7466900ecb2463aebd16f37ab134
+PODFILE CHECKSUM: 6f0c7272fe70f41f8c63726fcb2fdc7749afbbba
 
 COCOAPODS: 1.4.0

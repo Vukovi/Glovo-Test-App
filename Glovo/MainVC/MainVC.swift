@@ -19,6 +19,7 @@ class MainVC: UIViewController {
     var zoom: Double = 15
     var polygons = [GMSPolygon]()
     var notWorkingArea: Bool?
+    var markers = [GMSMarker]()
     
     lazy var locationManager: CLLocationManager = {
         let locManager = CLLocationManager()
@@ -39,29 +40,38 @@ class MainVC: UIViewController {
         return mapView
     }()
     
-    lazy var addressView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
+    lazy var cityName: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = .white
+        view.text = "Sorry, no info at the moment"
+        view.textAlignment = .center
         return view
     }()
     
-    lazy var apartmentView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
+    lazy var cityCurrency: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = .white
+        view.text = "Sorry, no info at the moment"
+        view.textAlignment = .center
         return view
     }()
     
-    lazy var button: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("DONE", for: .normal)
-        btn.addTarget(self, action: #selector(MainVC.buttonPressed), for: .touchUpInside)
-        btn.backgroundColor = .yellow
-        return btn
+    lazy var cityTimeZone: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = .white
+        view.text = "Sorry, no info at the moment"
+        view.textAlignment = .center
+        return view
     }()
     
-    @objc func buttonPressed() {
-        print("btn pressed!!!")
-    }
+    lazy var cityState: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = .white
+        view.text = "Sorry, no info at the moment"
+        view.textAlignment = .center
+        return view
+    }()
+
     
     func setUIElements() {
         map.snp.remakeConstraints { (make) in
@@ -71,22 +81,29 @@ class MainVC: UIViewController {
             make.height.equalTo(self.view.frame.height * 2 / 3)
         }
         
-        addressView.snp.remakeConstraints { (make) in
+        cityName.snp.remakeConstraints { (make) in
             make.top.equalTo(map.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(Double(Double(self.view.frame.height) - Double(self.view.frame.height * 2 / 3))/3)
+            make.height.equalTo(Double(Double(self.view.frame.height) - Double(self.view.frame.height * 2 / 3))/4)
         }
         
-        apartmentView.snp.remakeConstraints { (make) in
-            make.top.equalTo(addressView.snp.bottom)
+        cityCurrency.snp.remakeConstraints { (make) in
+            make.top.equalTo(cityName.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(Double(Double(self.view.frame.height) - Double(self.view.frame.height * 2 / 3))/3)
+            make.height.equalTo(Double(Double(self.view.frame.height) - Double(self.view.frame.height * 2 / 3))/4)
         }
         
-        button.snp.remakeConstraints { (make) in
-            make.top.equalTo(apartmentView.snp.bottom)
+        cityTimeZone.snp.remakeConstraints { (make) in
+            make.top.equalTo(cityCurrency.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(Double(Double(self.view.frame.height) - Double(self.view.frame.height * 2 / 3))/4)
+        }
+        
+        cityState.snp.remakeConstraints { (make) in
+            make.top.equalTo(cityTimeZone.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -100,17 +117,21 @@ class MainVC: UIViewController {
         presenter?.attachView(view: self)
         
         self.view.addSubview(map)
-        self.view.addSubview(addressView)
-        self.view.addSubview(apartmentView)
-        self.view.addSubview(button)
+        self.view.addSubview(cityName)
+        self.view.addSubview(cityCurrency)
+        self.view.addSubview(cityTimeZone)
+        self.view.addSubview(cityState)
         
         setUIElements()
         currentLocation = locationManager.location
         configureWorkingArea()
         configureMap()
-        if !locatedInWorkingArea() && notWorkingArea == nil {
+        if !locatedInWorkingArea() {
             notWorkingArea = true
             showTable()
+        } else {
+            let city = findCity()
+            presenter?.cityDetail(cityName: city.code)
         }
     }
     
@@ -122,7 +143,13 @@ class MainVC: UIViewController {
 
 extension MainVC: MainView {
     func getCity(details: CityDetails) {
-        print(details)
+        cityName.text = details.name
+        cityCurrency.text = details.currency
+        cityTimeZone.text = details.time_zone
+        cityState.text = Glovo.instance.countries.filter({
+            $0.country == details.country
+        }).first?.name
+        
     }
     
     func showError(error: ApiError) {
@@ -147,6 +174,7 @@ extension MainVC: ReturnDelegate {
         let location = path?.coordinate(at: path!.count() - 1)
         let camera = GMSCameraPosition.camera(withTarget: location!, zoom: 11)
         map.animate(to: camera)
+        presenter?.cityDetail(cityName: city.code)
     }
     
     func goBack() {
@@ -156,8 +184,9 @@ extension MainVC: ReturnDelegate {
             self.locationManager.requestAlwaysAuthorization()
             self.notWorkingArea = true
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_ ) in
+            self.notWorkingArea = nil
+        }
         actionSheet.addAction(cancelAction)
         actionSheet.addAction(editAction)
         self.present(actionSheet, animated: true, completion: nil)
@@ -203,6 +232,7 @@ extension MainVC: GMSMapViewDelegate {
     
     func configureWorkingArea() {
         for area in Glovo.instance.cities {
+            var cityPaths = [GMSPath]()
             for encodedPath in area.working_area {
                 var oldPolygon: GMSPolygon?
                 if encodedPath != "" {
@@ -219,8 +249,17 @@ extension MainVC: GMSMapViewDelegate {
                     }
                     oldPolygon = polygon
                     polygons.append(polygon)
+                    cityPaths.append(polygon.path!)
                 }
             }
+            let path = cityPaths[cityPaths.count/2]
+            let location = path.coordinate(at: path.count() - 1)
+            let marker = GMSMarker(position: location)
+            marker.title = area.name
+            marker.snippet = area.code
+            marker.icon = GMSMarker.markerImage(with: .blue)
+            marker.map = map
+            markers.append(marker)
         }
     }
     
@@ -260,5 +299,41 @@ extension MainVC: GMSMapViewDelegate {
         }
         return located
     }
+    
+    func findCity(coordinateCity: CLLocationCoordinate2D? = nil) -> City {
+        let current: CLLocationCoordinate2D? = coordinateCity ?? currentLocation?.coordinate
+        var city: City!
+        for town in Glovo.instance.cities{
+            for encodedPath in town.working_area {
+                let polygon = GMSPolygon()
+                polygon.path = GMSPath(fromEncodedPath: encodedPath)
+                if let coordinate = current, GMSGeometryContainsLocation(coordinate, polygon.path!, true) {
+                    city = town
+                    break
+                }
+            }
+        }
+        
+        return city
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        print(position.zoom)
+        if position.zoom < 10 {
+            markers.map { $0.opacity = 1 }
+        } else {
+            markers.map { $0.opacity = 0 }
+        }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        let cityName = marker.title
+        let city: City = Glovo.instance.cities.filter { $0.name == cityName }.first!
+        chosenCity(city: city)
+        return true
+    }
+
+
+    
 }
 

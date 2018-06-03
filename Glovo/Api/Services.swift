@@ -84,7 +84,7 @@ struct Services {
         }
         
         override func endpoint() -> String {
-            return getConfiguration().baseUrl + getConfiguration().citiesEndpoint + "/\(city)"
+            return getConfiguration().baseUrl + getConfiguration().citiesEndpoint + "\(city)"
         }
         
         override func onSuccess(result: Any?) {

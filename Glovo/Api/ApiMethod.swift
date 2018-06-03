@@ -40,7 +40,7 @@ class ApiMethod {
     }
     
     func execute() {
-        Api.instance.alamofireManager?.request(endpoint(), method: httpMethod(), parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseResult in
+        Api.instance.alamofireManager?.request(endpoint(), method: httpMethod(), parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { responseResult in
 
             switch responseResult.result {
             case .success(let value):
